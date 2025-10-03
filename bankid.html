@@ -6,6 +6,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <script>
+  const bg = document.getElementById("bg-follow");
+  document.addEventListener("mousemove", (e) => {
+    let x = (e.clientX / window.innerWidth - 0.5) * 20;
+    let y = (e.clientY / window.innerHeight - 0.5) * 20;
+    bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+  });
+</script>
+
+  <!-- Background -->
+<div id="bg-follow" class="fixed inset-0 -z-10">
+  <img
+    src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    class="w-full h-full object-cover"
+    alt="Background"
+  />
+</div>
+
   <div class="container">
     <h2>BankID Inloggning</h2>
     <img src="https://camo.githubusercontent.com/9d700b67856c76e2739b122cda4cddf541fe77da3d75614f6195334526fbf48d/68747470733a2f2f7777772e62616e6b69642e636f6d2f6173736574732f62616e6b69642f72702f626573742d70726163746973655f696d616765732f4465736b746f705f51522e706e67" alt="BankID QR" class="qr">
@@ -14,3 +32,4 @@
   </div>
 </body>
 </html>
+
