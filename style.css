@@ -1,0 +1,65 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #004080;
+}
+
+.btn {
+  display: inline-block;
+  background: #2196f3;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #1976d2;
+}
+
+.partners {
+  margin-top: 30px;
+}
+
+.logos img {
+  height: 40px;
+  margin: 10px;
+}
+
+.offer {
+  border: 2px solid #800080;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.promo {
+  margin: 20px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.qr {
+  width: 200px;
+  margin: 20px 0;
+}
