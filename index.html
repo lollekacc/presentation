@@ -10,15 +10,19 @@
     }
   </style>
 </head>
-<body class="relative min-h-screen overflow-hidden text-white bg-transparent">
+<body class="relative min-h-screen overflow-hidden text-white">
 
   <!-- 🔹 Background -->
   <div id="bg-follow" class="fixed inset-0 -z-10">
-    <img src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover" />
+    <img src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         class="w-full h-full object-cover" />
   </div>
 
+  <!-- 🔹 Top Left Logo/Company Name -->
+  <div class="absolute top-4 left-6 z-50 text-3xl font-extrabold">APM</div>
+
   <!-- 🔹 Navigation Bar -->
-  <header class="w-full fixed top-0 left-0 z-50 px-8 py-4">
+  <header class="w-full fixed top-0 left-0 z-40 px-8 py-4">
     <nav class="flex justify-center space-x-10 text-white text-lg font-semibold bg-black bg-opacity-30 rounded-full px-6 py-2">
       <a href="#abonnemang" class="hover:text-blue-400 transition">Abonnemang</a>
       <a href="#partner" class="hover:text-blue-400 transition">Partner</a>
@@ -28,22 +32,21 @@
     </nav>
   </header>
 
-  <!-- 🔹 Main Content -->
-  <div class="container relative z-10 pt-36 px-6 py-12 text-center flex flex-col items-center justify-center min-h-screen bg-transparent">
-    <h1 class="text-7xl font-extrabold mb-6">APM</h1>
+  <!-- 🔹 Main Centered Content -->
+  <div class="flex flex-col items-center justify-center text-center min-h-screen pt-36 px-6">
     <p class="text-2xl mb-8">Bättre/Billigare abonnemang?</p>
     <a href="bankid.html" class="btn mb-10">Logga In</a>
+  </div>
 
-    <!-- Partner Logos Section -->
-    <div id="partner" class="partners mt-10">
-      <p class="mb-4 text-xl">I samarbete med:</p>
-      <div class="logos flex gap-6 flex-wrap justify-center">
-        <img src="https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg" alt="Tele2" class="h-20">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png" alt="Telia" class="h-20">
-        <img src="https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg" alt="Telenor" class="h-20">
-        <img src="https://www.mobiltelefoni.se/cms2/wp-content/uploads/2018/09/tre-logo-1024x600.jpg" alt="Tre" class="h-20">
-        <img src="https://mobilt-bredband.net/wp-content/uploads/2025/03/unnamed.png" alt="Halebop" class="h-20">
-      </div>
+  <!-- 🔹 Partner Logos at Bottom Left -->
+  <div class="absolute bottom-6 left-6 z-50">
+    <p class="mb-2 text-sm font-semibold">I samarbete med:</p>
+    <div class="flex gap-4 flex-wrap">
+      <img src="https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg" alt="Tele2" class="h-12">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png" alt="Telia" class="h-12">
+      <img src="https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg" alt="Telenor" class="h-12">
+      <img src="https://www.mobiltelefoni.se/cms2/wp-content/uploads/2018/09/tre-logo-1024x600.jpg" alt="Tre" class="h-12">
+      <img src="https://mobilt-bredband.net/wp-content/uploads/2025/03/unnamed.png" alt="Halebop" class="h-12">
     </div>
   </div>
 
