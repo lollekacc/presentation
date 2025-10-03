@@ -1,25 +1,64 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>APM - Logga In</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halebop x NVIDIA Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Optional custom colors for NVIDIA style */
+    body { background-color: #0b0b0b; }
+  </style>
 </head>
-<body>
-  <div class="container">
-    <h1>APM</h1>
-    <p>Bättre/Billigare abonnemang?</p>
-    <a href="bankid.html" class="btn">Logga In</a>
-    <div class="partners">
-      <p>I samarbete med:</p>
-      <div class="logos">
-        <img src="https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg" alt="Tele2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png" alt="Telia">
-        <img src="https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg" alt="Telenor">
-        <img src="https://www.mobiltelefoni.se/cms2/wp-content/uploads/2018/09/tre-logo-1024x600.jpg" alt="Tre">
-        <img src="https://mobilt-bredband.net/wp-content/uploads/2025/03/unnamed.png" alt="Halebop">
+<body class="font-sans text-white">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-8 py-6 bg-gradient-to-r from-green-600 to-green-400 shadow-lg">
+    <h1 class="text-3xl font-bold tracking-wide">Halebop x NVIDIA Style</h1>
+    <nav class="space-x-6">
+      <a href="#" class="hover:text-green-300 transition">Home</a>
+      <a href="#" class="hover:text-green-300 transition">Plans</a>
+      <a href="#" class="hover:text-green-300 transition">Offers</a>
+      <a href="#" class="hover:text-green-300 transition">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative text-center py-32 bg-gradient-to-r from-black via-gray-800 to-black">
+    <h2 class="text-5xl font-extrabold mb-4">Powerful Connections. Legendary Speed.</h2>
+    <p class="text-gray-300 mb-8 text-lg">Experience Halebop plans with NVIDIA-style visuals and performance.</p>
+    <button class="px-8 py-3 bg-green-600 hover:bg-green-500 rounded-lg font-bold transition">View Plans</button>
+  </section>
+
+  <!-- Plans Section -->
+  <section class="py-20 px-8 max-w-6xl mx-auto">
+    <h3 class="text-4xl font-bold text-center mb-12">Our Plans</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-green-600 transition">
+        <h4 class="text-2xl font-bold mb-2">Halebop Kontant</h4>
+        <p class="text-green-400 text-xl mb-4">99 kr/mån</p>
+        <p class="text-gray-300 mb-6">Få full kontroll, ingen bindningstid.</p>
+        <button class="px-6 py-2 bg-green-600 hover:bg-green-500 rounded font-bold transition">Sign Up</button>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-green-600 transition">
+        <h4 class="text-2xl font-bold mb-2">Halebop Comviq</h4>
+        <p class="text-green-400 text-xl mb-4">149 kr/mån</p>
+        <p class="text-gray-300 mb-6">Snabb surf och fria samtal.</p>
+        <button class="px-6 py-2 bg-green-600 hover:bg-green-500 rounded font-bold transition">Sign Up</button>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-green-600 transition">
+        <h4 class="text-2xl font-bold mb-2">Halebop Familj</h4>
+        <p class="text-green-400 text-xl mb-4">249 kr/mån</p>
+        <p class="text-gray-300 mb-6">Dela surf med hela familjen.</p>
+        <button class="px-6 py-2 bg-green-600 hover:bg-green-500 rounded font-bold transition">Sign Up</button>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-8 text-center text-gray-400">
+    &copy; 2025 Halebop NVIDIA Style. All rights reserved.
+  </footer>
+
 </body>
 </html>
