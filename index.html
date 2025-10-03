@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="bg-follow" class="fixed inset-0 -z-10">
+  <img src="d2d91b1b-5bd3-46ce-8613-ce37559846c6.png" alt="background" class="w-full h-full object-cover" />
+</div>
+
   <div class="container">
     <h1>APM</h1>
     <p>Bättre/Billigare abonnemang?</p>
@@ -21,7 +25,17 @@
       </div>
     </div>
   </div>
+  <script>
+  const bg = document.getElementById("bg-follow");
+  document.addEventListener("mousemove", (e) => {
+    let x = (e.clientX / window.innerWidth - 0.5) * 20; // adjust strength
+    let y = (e.clientY / window.innerHeight - 0.5) * 20;
+    bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`; // scale to avoid edges showing
+  });
+</script>
+
 </body>
 </html>
+
 
 
