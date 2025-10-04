@@ -4,12 +4,84 @@
   <meta charset="UTF-8">
   <title>Signera Avtal</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- QRCode.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    #qrcode {
+      margin: 1.5rem auto;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h2>Signera Ditt Avtal</h2>
     <p>Bekräfta ditt val och signera med BankID för att slutföra.</p>
+
+    <!-- QR code will be generated here -->
+    <div id="qrcode"></div>
+
     <a href="index.html" class="btn">Signera med BankID</a>
   </div>
+
+  <script>
+    const qrContainer = document.getElementById('qrcode');
+
+    function generateQR() {
+      qrContainer.innerHTML = ''; // Clear previous QR
+      new QRCode(qrContainer, {
+        text: "https://ditt-avtal.exempel.se/signering?id=" + Date.now(), // random unique per second
+        width: 180,
+        height: 180,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    // Generate initial QR
+    generateQR();
+
+    // Regenerate QR every 1 second
+    setInterval(generateQR, 1000);
+  </script>
 </body>
 </html>
