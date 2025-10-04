@@ -1,99 +1,42 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jämför Abonnemang</title>
-  <style>
-    /* Reset margin and full height */
-    html, body {
-      margin: 0;
-      height: 100%;
-      overflow: hidden;
-      color: white;
-      font-family: sans-serif;
-      background: transparent;
-      position: relative;
-    }
-
-    /* Background container */
-    #bg-follow {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -1; /* behind everything */
-      overflow: hidden;
-    }
-
-    #bg-follow img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.1s ease-out;
-    }
-
-    /* Your content container */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      margin: auto;
-      padding: 2rem;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5); /* subtle dark overlay for readability */
-      border-radius: 8px;
-      margin-top: 5vh;
-    }
-
-    .btn {
-      background-color: #2563eb; /* blue */
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 1.125rem;
-      margin-top: 1.5rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #1d4ed8;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="relative min-h-screen bg-gray-100 text-center flex flex-col items-center justify-center px-4">
 
   <!-- Background -->
-  <div id="bg-follow">
-    <img
-      src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      alt="Background"
-    />
+  <div id="bg-follow" class="fixed inset-0 -z-10">
+    <img src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000" class="w-full h-full object-cover" />
   </div>
 
-  <div class="container">
-    <h2>Dina Förmåner</h2>
-    <div class="offer">Fastpris + 30 GB surf för 349:-/mån</div>
+  <!-- Content -->
+  <div class="bg-white bg-opacity-90 rounded-lg shadow-md p-8 max-w-md w-full z-10">
+    <h2 class="text-2xl font-bold mb-4">Dina Förmåner</h2>
+    <div class="text-lg mb-6">Fastpris + 30 GB surf för 349:-/mån</div>
 
-    <h2>Din Behov</h2>
-    <div class="offer">Fastpris + 15 GB surf för 249:-/mån</div>
+    <h2 class="text-2xl font-bold mb-4">Din Behov</h2>
+    <div class="text-lg mb-6">Fastpris + 15 GB surf för 249:-/mån</div>
 
-    <p class="promo">
-      Tratta ned onödig surf och få <b>Billigare abonnemang</b> +
+    <p class="mb-6">
+      Tratta ned onödig surf och få <b>Billigare abonnemang</b> +<br />
       <b>Presentkort värde 1000:-</b>
     </p>
 
-    <a href="sign.html" class="btn">Välj detta erbjudande</a>
+    <a href="sign.html" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Välj detta erbjudande</a>
   </div>
 
-  <!-- Parallax Background Script -->
   <script>
-    const bgImg = document.querySelector("#bg-follow img");
+    const bg = document.getElementById("bg-follow");
     document.addEventListener("mousemove", (e) => {
       let x = (e.clientX / window.innerWidth - 0.5) * 20;
       let y = (e.clientY / window.innerHeight - 0.5) * 20;
-      bgImg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+      bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
     });
   </script>
+
 </body>
 </html>
