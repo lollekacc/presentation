@@ -6,42 +6,114 @@
   <title>Signera Avtal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.75rem; /* larger heading */
+      margin-bottom: 0.75rem;
+      color: #1e3a8a;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    #qrcode {
+      margin: 1rem auto;
+      display: flex;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2563eb;
+      color: white;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #1d4ed8;
+    }
+    .logos {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .logos img {
+      height: 40px;
+      /* you can reduce for very small screens */
+    }
+    @media (max-width: 360px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+      .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+      .logos img {
+        height: 32px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body>
+  <div class="container">
+    <h2>Signera Ditt Avtal</h2>
+    <p>Bekräfta ditt val och signera med BankID för att slutföra.</p>
 
-  <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full text-center">
-    <h2 class="text-2xl font-semibold text-blue-700 mb-2">Signera Ditt Avtal</h2>
-    <p class="mb-4">Bekräfta ditt val och signera med BankID för att slutföra.</p>
+    <div id="qrcode"></div>
 
-    <div id="qrcode" class="flex justify-center mb-6"></div>
+    <a href="index.html" class="btn">Signera med BankID</a>
 
-    <a href="index.html" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition">Signera med BankID</a>
+    <!-- Logos (if you want them) -->
+    <div class="logos">
+      <img src="logo1.png" alt="Partner 1" />
+      <img src="logo2.png" alt="Partner 2" />
+      <!-- add more if needed -->
+    </div>
   </div>
 
   <script>
     const qrContainer = document.getElementById("qrcode");
 
-    async function fetchQRData() {
-      const randomId = Math.floor(Math.random() * 1000000);
-      return { url: "https://example.com/sign/" + randomId };
-    }
-
-    async function generateQRCode() {
-      const data = await fetchQRData();
-      qrContainer.innerHTML = "";
+    function generateQR() {
+      qrContainer.innerHTML = ""; // clear previous
+      // This is sample dynamic content. Replace with your real API or link.
       new QRCode(qrContainer, {
-        text: data.url,
-        width: 180,
-        height: 180,
+        text: "https://example.com/sign?id=" + Date.now(),
+        width: 200,
+        height: 200,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
       });
     }
 
-    generateQRCode();
-    setInterval(generateQRCode, 1000);
+    // initial + periodic refresh
+    generateQR();
+    setInterval(generateQR, 1000);
   </script>
-
 </body>
 </html>
