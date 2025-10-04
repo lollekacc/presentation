@@ -1,36 +1,72 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Jämför Abonnemang</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Ensure body and html fill viewport so background works correctly */
+    /* Reset margin and full height */
     html, body {
-      height: 100%;
       margin: 0;
+      height: 100%;
       overflow: hidden;
-      color: white; /* Assuming text over dark bg */
+      color: white;
+      font-family: sans-serif;
       background: transparent;
       position: relative;
     }
+
+    /* Background container */
+    #bg-follow {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1; /* behind everything */
+      overflow: hidden;
+    }
+
+    #bg-follow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.1s ease-out;
+    }
+
+    /* Your content container */
     .container {
       position: relative;
-      z-index: 10;
-      padding: 2rem;
+      z-index: 1;
       max-width: 600px;
       margin: auto;
+      padding: 2rem;
       text-align: center;
+      background: rgba(0, 0, 0, 0.5); /* subtle dark overlay for readability */
+      border-radius: 8px;
+      margin-top: 5vh;
+    }
+
+    .btn {
+      background-color: #2563eb; /* blue */
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1.125rem;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
     }
   </style>
 </head>
 <body>
 
   <!-- Background -->
-  <div id="bg-follow" class="fixed inset-0 -z-10">
+  <div id="bg-follow">
     <img
       src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      class="w-full h-full object-cover"
       alt="Background"
     />
   </div>
@@ -52,13 +88,12 @@
 
   <!-- Parallax Background Script -->
   <script>
-    const bg = document.getElementById("bg-follow");
+    const bgImg = document.querySelector("#bg-follow img");
     document.addEventListener("mousemove", (e) => {
       let x = (e.clientX / window.innerWidth - 0.5) * 20;
       let y = (e.clientY / window.innerHeight - 0.5) * 20;
-      bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+      bgImg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
     });
   </script>
-
 </body>
 </html>
