@@ -4,8 +4,37 @@
   <meta charset="UTF-8">
   <title>Jämför Abonnemang</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Ensure body and html fill viewport so background works correctly */
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      color: white; /* Assuming text over dark bg */
+      background: transparent;
+      position: relative;
+    }
+    .container {
+      position: relative;
+      z-index: 10;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Background -->
+  <div id="bg-follow" class="fixed inset-0 -z-10">
+    <img
+      src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      class="w-full h-full object-cover"
+      alt="Background"
+    />
+  </div>
+
   <div class="container">
     <h2>Dina Förmåner</h2>
     <div class="offer">Fastpris + 30 GB surf för 349:-/mån</div>
@@ -20,5 +49,16 @@
 
     <a href="sign.html" class="btn">Välj detta erbjudande</a>
   </div>
+
+  <!-- Parallax Background Script -->
+  <script>
+    const bg = document.getElementById("bg-follow");
+    document.addEventListener("mousemove", (e) => {
+      let x = (e.clientX / window.innerWidth - 0.5) * 20;
+      let y = (e.clientY / window.innerHeight - 0.5) * 20;
+      bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    });
+  </script>
+
 </body>
 </html>
