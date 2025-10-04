@@ -4,42 +4,24 @@
   <meta charset="UTF-8" />
   <title>BankID Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- QRCode.js library -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
-<body class="relative min-h-screen overflow-hidden bg-transparent text-white">
-
-  <!-- Background -->
-  <div id="bg-follow" class="fixed inset-0 -z-10">
-    <img
-      src="https://docs.lightburnsoftware.com/legacy/img/QRCode/ExampleCode.png"
-      class="w-full h-full object-cover"
-      alt="Background"
-    />
-  </div>
+<body class="relative min-h-screen overflow-hidden bg-gray-900 text-white flex items-center justify-center">
 
   <!-- Content -->
-  <div class="container relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
+  <div class="text-center px-4">
     <h2 class="text-5xl font-bold mb-6">BankID Inloggning</h2>
 
     <p class="text-2xl mb-2">BankID QR</p>
 
     <!-- Dynamic QR Code Container -->
-    <div id="qrcode" class="mb-6 rounded shadow-lg" style="width: 256px; height: 256px; margin: 0 auto;"></div>
+    <div id="qrcode" class="mb-6 rounded shadow-lg mx-auto" style="width: 256px; height: 256px;"></div>
 
     <p class="text-xl mb-6">Skanna QR-koden i din BankID-app</p>
-    <a href="offers.html" class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition text-lg">Fortsätt</a>
+    <a href="offers.html" class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition text-lg inline-block">Fortsätt</a>
   </div>
 
-  <!-- Parallax Script -->
   <script>
-    const bg = document.getElementById("bg-follow");
-    document.addEventListener("mousemove", (e) => {
-      let x = (e.clientX / window.innerWidth - 0.5) * 20;
-      let y = (e.clientY / window.innerHeight - 0.5) * 20;
-      bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
-    });
-
     // Generate QR code dynamically inside #qrcode div
     new QRCode(document.getElementById("qrcode"), {
       text: "https://bankid.example.com/login",
