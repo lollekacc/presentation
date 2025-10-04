@@ -6,29 +6,95 @@
   <title>Jämför Abonnemang</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="relative min-h-screen bg-gray-100 text-center flex flex-col items-center justify-center px-4">
+<body class="relative min-h-screen bg-gray-100 text-center px-4 pt-20 pb-12">
 
   <!-- Background -->
   <div id="bg-follow" class="fixed inset-0 -z-10">
     <img src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000" class="w-full h-full object-cover" />
   </div>
 
-  <!-- Content -->
-  <div class="bg-white bg-opacity-90 rounded-lg shadow-md p-8 max-w-md w-full z-10">
-    <h2 class="text-2xl font-bold mb-4">Dina Förmåner</h2>
-    <div class="text-lg mb-6">Fastpris + 30 GB surf för 349:-/mån</div>
-
-    <h2 class="text-2xl font-bold mb-4">Din Behov</h2>
-    <div class="text-lg mb-6">Fastpris + 15 GB surf för 249:-/mån</div>
-
-    <p class="mb-6">
-      Tratta ned onödig surf och få <b>Billigare abonnemang</b> +<br />
-      <b>Presentkort värde 1000:-</b>
-    </p>
-
-    <a href="sign.html" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Välj detta erbjudande</a>
+  <!-- Main Offer -->
+  <div id="main-offer" class="bg-white bg-opacity-90 rounded-lg shadow-md p-8 max-w-md mx-auto mb-10 flex flex-col items-center">
+    <!-- Content will be injected via JS -->
   </div>
 
+  <!-- Sub Offers -->
+  <div id="sub-offers" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto z-10">
+    <!-- Sub-offers will be injected here -->
+  </div>
+
+  <!-- Script: Offer Randomizer -->
+  <script>
+    const companies = [
+      {
+        name: "Tele2",
+        logo: "https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg",
+        offer: "Fastpris + 30 GB surf för 349:-/mån"
+      },
+      {
+        name: "Telia",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png",
+        offer: "Fastpris + 40 GB surf för 369:-/mån"
+      },
+      {
+        name: "Halebop",
+        logo: "https://mobilt-bredband.net/wp-content/uploads/2025/03/unnamed.png",
+        offer: "Fastpris + 20 GB surf för 279:-/mån"
+      },
+      {
+        name: "Tre",
+        logo: "https://www.mobiltelefoni.se/cms2/wp-content/uploads/2018/09/tre-logo-1024x600.jpg",
+        offer: "Fastpris + 25 GB surf för 299:-/mån"
+      },
+      {
+        name: "Telenor",
+        logo: "https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg",
+        offer: "Fastpris + 35 GB surf för 359:-/mån"
+      }
+    ];
+
+    // Shuffle helper
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    const shuffled = shuffle([...companies]);
+    const main = shuffled[0];
+    const subOffers = shuffled.slice(1, 5);
+
+    // MAIN OFFER content
+    document.getElementById("main-offer").innerHTML = `
+      <img src="${main.logo}" alt="${main.name}" class="h-12 mb-4" />
+      <h2 class="text-2xl font-bold mb-2">${main.name} Erbjudande</h2>
+      <div class="text-lg mb-4">${main.offer}</div>
+
+      <h3 class="text-xl font-semibold mb-2">Din Behov</h3>
+      <div class="text-base mb-4">Fastpris + 15 GB surf för 249:-/mån</div>
+
+      <p class="mb-6">
+        Tratta ned onödig surf och få <b>Billigare abonnemang</b> +<br />
+        <b>Presentkort värde 1000:-</b>
+      </p>
+
+      <a href="sign.html" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Välj detta erbjudande</a>
+    `;
+
+    // SUB OFFERS content
+    const container = document.getElementById("sub-offers");
+    subOffers.forEach(company => {
+      const offer = document.createElement("div");
+      offer.className = "bg-white bg-opacity-90 rounded-lg shadow p-4 flex flex-col items-center";
+      offer.innerHTML = `
+        <img src="${company.logo}" alt="${company.name}" class="h-12 mb-4" />
+        <h3 class="text-xl font-semibold mb-2">${company.name}</h3>
+        <p class="mb-4">${company.offer}</p>
+        <a href="sign.html" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">Välj</a>
+      `;
+      container.appendChild(offer);
+    });
+  </script>
+
+  <!-- Parallax Background -->
   <script>
     const bg = document.getElementById("bg-follow");
     document.addEventListener("mousemove", (e) => {
