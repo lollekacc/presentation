@@ -2,35 +2,45 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>BankID Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BankID Inloggning</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
-<body class="relative min-h-screen overflow-hidden bg-gray-900 text-white flex items-center justify-center">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-  <!-- Content -->
-  <div class="text-center px-4">
-    <h2 class="text-5xl font-bold mb-6">BankID Inloggning</h2>
+  <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full text-center">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-2">BankID Inloggning</h2>
+    <p class="mb-4">Skanna QR-koden i din BankID-app</p>
 
-    <p class="text-2xl mb-2">BankID QR</p>
+    <div id="qrcode" class="flex justify-center mb-6"></div>
 
-    <!-- Dynamic QR Code Container -->
-    <div id="qrcode" class="mb-6 rounded shadow-lg mx-auto" style="width: 256px; height: 256px;"></div>
-
-    <p class="text-xl mb-6">Skanna QR-koden i din BankID-app</p>
-    <a href="offers.html" class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition text-lg inline-block">Fortsätt</a>
+    <a href="offers.html" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition">Fortsätt</a>
   </div>
 
   <script>
-    // Generate QR code dynamically inside #qrcode div
-    new QRCode(document.getElementById("qrcode"), {
-      text: "https://bankid.example.com/login",
-      width: 256,
-      height: 256,
-      colorDark : "#000000",
-      colorLight : "#ffffff",
-      correctLevel : QRCode.CorrectLevel.H
-    });
+    const qrContainer = document.getElementById("qrcode");
+
+    async function fetchQRData() {
+      const randomId = Math.floor(Math.random() * 1000000);
+      return { url: "https://example.com/session/" + randomId };
+    }
+
+    async function generateQRCode() {
+      const data = await fetchQRData();
+      qrContainer.innerHTML = "";
+      new QRCode(qrContainer, {
+        text: data.url,
+        width: 180,
+        height: 180,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    generateQRCode();
+    setInterval(generateQRCode, 1000);
   </script>
 
 </body>
