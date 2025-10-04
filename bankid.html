@@ -1,57 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>Dynamic QR Code Generator</title>
+  <title>BankID Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <style>
-    body {
-      background: #222;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    #qrcode {
-      margin: 20px;
-      padding: 10px;
-      background: white;
-      border-radius: 8px;
-    }
-  </style>
 </head>
-<body>
-  <h1>Dynamic QR Code Generator</h1>
-  <div id="qrcode"></div>
+<body class="relative min-h-screen overflow-hidden bg-gray-900 text-white flex items-center justify-center">
+
+  <!-- Content -->
+  <div class="text-center px-4">
+    <h2 class="text-5xl font-bold mb-6">BankID Inloggning</h2>
+
+    <p class="text-2xl mb-2">BankID QR</p>
+
+    <!-- Dynamic QR Code Container -->
+    <div id="qrcode" class="mb-6 rounded shadow-lg mx-auto" style="width: 256px; height: 256px;"></div>
+
+    <p class="text-xl mb-6">Skanna QR-koden i din BankID-app</p>
+    <a href="offers.html" class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition text-lg inline-block">Fortsätt</a>
+  </div>
 
   <script>
-    const qrcodeContainer = document.getElementById("qrcode");
-    let qr;
-
-    function generateQR() {
-      // Clear old QR code if it exists
-      if (qr) {
-        qrcodeContainer.innerHTML = "";
-      }
-
-      // Create new QR code with current timestamp
-      qr = new QRCode(qrcodeContainer, {
-        text: `Dynamic code: ${new Date().toISOString()}`,
-        width: 256,
-        height: 256,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H,
-      });
-    }
-
-    // Generate a new QR code every 1 second
-    generateQR(); // Initial call
-    setInterval(generateQR, 1000);
+    // Generate QR code dynamically inside #qrcode div
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://bankid.example.com/login",
+      width: 256,
+      height: 256,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
   </script>
+
 </body>
 </html>
