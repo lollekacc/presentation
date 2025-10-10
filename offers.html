@@ -1,108 +1,131 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jämför Abonnemang</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="relative min-h-screen bg-gray-100 text-center px-4 pt-20 pb-12">
+  <!DOCTYPE html>
+  <html lang="sv">
+  <head>
+    <link rel="stylesheet" href="style.css" />
 
-  <!-- Background -->
-  <div id="bg-follow" class="fixed inset-0 -z-10">
-    <img src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000" class="w-full h-full object-cover" />
-  </div>
-
-  <!-- Main Offer -->
-  <div id="main-offer" class="bg-white bg-opacity-90 rounded-lg shadow-md p-8 max-w-md mx-auto mb-10 flex flex-col items-center">
-    <!-- Content will be injected via JS -->
-  </div>
-
-  <!-- Sub Offers -->
-  <div id="sub-offers" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto z-10">
-    <!-- Sub-offers will be injected here -->
-  </div>
-
-  <!-- Script: Offer Randomizer -->
-  <script>
-    const companies = [
-      {
-        name: "Tele2",
-        logo: "https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg",
-        offer: "Fastpris + 30 GB surf för 349:-/mån"
-      },
-      {
-        name: "Telia",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png",
-        offer: "Fastpris + 40 GB surf för 369:-/mån"
-      },
-      {
-        name: "Halebop",
-        logo: "https://mobilt-bredband.net/wp-content/uploads/2025/03/unnamed.png",
-        offer: "Fastpris + 20 GB surf för 279:-/mån"
-      },
-      {
-        name: "Tre",
-        logo: "https://www.mobiltelefoni.se/cms2/wp-content/uploads/2018/09/tre-logo-1024x600.jpg",
-        offer: "Fastpris + 25 GB surf för 299:-/mån"
-      },
-      {
-        name: "Telenor",
-        logo: "https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg",
-        offer: "Fastpris + 35 GB surf för 359:-/mån"
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jämför Abonnemang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .btn {
+        @apply bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition;
       }
-    ];
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 min-h-screen flex flex-col">
 
-    // Shuffle helper
-    function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5);
-    }
+    <!-- Header -->
+    <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-extrabold text-blue-600">APM</a>
 
-    const shuffled = shuffle([...companies]);
-    const main = shuffled[0];
-    const subOffers = shuffled.slice(1, 5);
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-6 text-lg font-medium text-gray-700">
+          <a href="abonnemang.html" class="hover:text-blue-600 transition">Abonnemang</a>
+          <a href="partner.html" class="hover:text-blue-600 transition">Partner</a>
+          <a href="vouchers.html" class="hover:text-blue-600 transition">Vouchers</a>
+          <a href="om-oss.html" class="hover:text-blue-600 transition">Om oss</a>
+          <a href="kundservice.html" class="hover:text-blue-600 transition">Kundservice</a>
+        </nav>
 
-    // MAIN OFFER content
-    document.getElementById("main-offer").innerHTML = `
-      <img src="${main.logo}" alt="${main.name}" class="h-12 mb-4" />
-      <h2 class="text-2xl font-bold mb-2">${main.name} Erbjudande</h2>
-      <div class="text-lg mb-4">${main.offer}</div>
+        <!-- Login Icon -->
+        <a href="login.html" class="text-gray-700 hover:text-blue-600 transition" aria-label="Mina Sidor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M5.121 17.804A9.005 9.005 0 0112 15c2.21 0 4.21.895 5.657 2.343M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </a>
+      </div>
+    </header>
 
-      <h3 class="text-xl font-semibold mb-2">Din Behov</h3>
-      <div class="text-base mb-4">Fastpris + 15 GB surf för 249:-/mån</div>
+    <!-- Spacer for fixed header -->
+    <div class="h-24"></div>
 
-      <p class="mb-6">
-        Tratta ned onödig surf och få <b>Billigare abonnemang</b> +<br />
-        <b>Presentkort värde 1000:-</b>
-      </p>
+    <!-- Main Offer Section -->
+    <main class="flex-grow px-4 py-12">
+      <h1 class="text-3xl font-bold text-center text-blue-600 mb-10">Jämför Abonnemang</h1>
 
-      <a href="sign.html" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Välj detta erbjudande</a>
-    `;
+      <!-- Main Offer Card -->
+      <div id="main-offer" class="bg-white border border-gray-200 rounded-lg shadow-md p-8 max-w-md mx-auto mb-12 text-center">
+        <!-- Content inserted by JS -->
+      </div>
 
-    // SUB OFFERS content
-    const container = document.getElementById("sub-offers");
-    subOffers.forEach(company => {
-      const offer = document.createElement("div");
-      offer.className = "bg-white bg-opacity-90 rounded-lg shadow p-4 flex flex-col items-center";
-      offer.innerHTML = `
-        <img src="${company.logo}" alt="${company.name}" class="h-12 mb-4" />
-        <h3 class="text-xl font-semibold mb-2">${company.name}</h3>
-        <p class="mb-4">${company.offer}</p>
-        <a href="sign.html" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">Välj</a>
+      <!-- Sub Offers -->
+      <div id="sub-offers" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <!-- Offers inserted by JS -->
+      </div>
+    </main>
+
+    <!-- Offer Content Script -->
+    <script>
+      const companies = [
+        {
+          name: "Tele2",
+          logo: "https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg",
+          offer: "Fastpris + 30 GB surf för 349:-/mån"
+        },
+        {
+          name: "Telia",
+          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png",
+          offer: "Fastpris + 40 GB surf för 369:-/mån"
+        },
+        {
+          name: "Halebop",
+          logo: "https://mobilt-bredband.net/wp-content/uploads/2025/03/unnamed.png",
+          offer: "Fastpris + 20 GB surf för 279:-/mån"
+        },
+        {
+          name: "Tre",
+          logo: "https://www.mobiltelefoni.se/cms2/wp-content/uploads/2018/09/tre-logo-1024x600.jpg",
+          offer: "Fastpris + 25 GB surf för 299:-/mån"
+        },
+        {
+          name: "Telenor",
+          logo: "https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg",
+          offer: "Fastpris + 35 GB surf för 359:-/mån"
+        }
+      ];
+
+      function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+      }
+
+      const shuffled = shuffle([...companies]);
+      const main = shuffled[0];
+      const subOffers = shuffled.slice(1, 5);
+
+      // Main offer content
+      document.getElementById("main-offer").innerHTML = `
+        <img src="${main.logo}" alt="${main.name}" class="h-14 mb-4 mx-auto" />
+        <h2 class="text-2xl font-bold mb-2">${main.name} Erbjudande</h2>
+        <p class="text-lg mb-4">${main.offer}</p>
+
+        <h3 class="text-xl font-semibold mb-2">Ditt behov</h3>
+        <p class="text-base mb-4">Fastpris + 15 GB surf för 249:-/mån</p>
+
+        <p class="mb-6">
+          Tratta ned onödig surf och få <strong>billigare abonnemang</strong> +<br />
+          <strong>Presentkort värde 1000:-</strong>
+        </p>
+
+        <a href="sign.html" class="btn">Välj detta erbjudande</a>
       `;
-      container.appendChild(offer);
-    });
-  </script>
 
-  <!-- Parallax Background -->
-  <script>
-    const bg = document.getElementById("bg-follow");
-    document.addEventListener("mousemove", (e) => {
-      let x = (e.clientX / window.innerWidth - 0.5) * 20;
-      let y = (e.clientY / window.innerHeight - 0.5) * 20;
-      bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
-    });
-  </script>
-
-</body>
-</html>
+      // Sub offers
+      const container = document.getElementById("sub-offers");
+      subOffers.forEach(company => {
+        const offer = document.createElement("div");
+        offer.className = "bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center";
+        offer.innerHTML = `
+          <img src="${company.logo}" alt="${company.name}" class="h-12 mb-4 mx-auto" />
+          <h3 class="text-xl font-semibold mb-2">${company.name}</h3>
+          <p class="mb-4">${company.offer}</p>
+          <a href="sign.html" class="btn">Välj</a>
+        `;
+        container.appendChild(offer);
+      });
+    </script>
+  </body>
+  </html>
