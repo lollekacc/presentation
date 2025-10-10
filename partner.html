@@ -1,57 +1,90 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+  <link rel="stylesheet" href="style.css" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>APM - Partner</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .btn {
-      @apply bg-blue-600 text-white py-3 px-6 rounded hover:bg-blue-700 transition text-lg;
-    }
-  </style>
 </head>
-<body class="relative min-h-screen overflow-hidden text-white">
+<body class="relative min-h-screen bg-white text-gray-900">
 
-  <!-- Background -->
-  <div id="bg-follow" class="fixed inset-0 -z-10">
-    <img
-      src="https://images.unsplash.com/photo-1644088379091-d574269d422f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      class="w-full h-full object-cover"
-    />
-  </div>
-
-  <!-- Top Left Logo/Company Name -->
-  <a href="index.html" class="absolute top-4 left-6 z-50 text-3xl font-extrabold">APM</a>
-
-  <!-- Top Right Mina Sidor Icon -->
-  <a href="login.html" class="absolute top-4 right-6 z-50 text-white hover:text-blue-400 transition" aria-label="Mina Sidor">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A9.005 9.005 0 0112 15c2.21 0 4.21.895 5.657 2.343M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-  </a>
-
-  <!-- Navigation Bar -->
-  <header class="w-full fixed top-0 left-0 z-40 px-8 py-4">
-    <nav class="flex justify-center space-x-10 text-white text-lg font-semibold bg-black bg-opacity-30 rounded-full px-6 py-2">
-      <a href="abonnemang.html" class="hover:text-blue-400 transition">Abonnemang</a>
-      <a href="partner.html" class="hover:text-blue-400 transition">Partner</a>
-      <a href="vouchers.html" class="hover:text-blue-400 transition">Vouchers</a>
-      <a href="om-oss.html" class="hover:text-blue-400 transition">Om oss</a>
-      <a href="kundservice.html" class="hover:text-blue-400 transition">Kundservice</a>
-    </nav>
+  <!-- Header -->
+  <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-extrabold text-blue-600">Adeala</a>
+      <nav class="hidden md:flex space-x-6 text-lg font-medium text-gray-700">
+        <a href="#offers" class="hover:text-blue-600 transition">Abonnemang</a>
+        <a href="#offers" class="hover:text-blue-600 transition">Bredband</a>
+        <a href="partner.html" class="hover:text-blue-600 transition">Partner</a>
+        <a href="belöning.html" class="hover:text-blue-600 transition">Belöning</a>
+        <a href="om-oss.html" class="hover:text-blue-600 transition">Om oss</a>
+        <a href="kundservice.html" class="hover:text-blue-600 transition">Kundservice</a>
+      </nav>
+      <a href="login.html" class="text-gray-700 hover:text-blue-600 transition" aria-label="Mina Sidor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5.121 17.804A9.005 9.005 0 0112 15c2.21 0 4.21.895 5.657 2.343M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </a>
+    </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex flex-col items-center justify-start min-h-screen pt-36 px-6 text-center max-w-4xl mx-auto space-y-8">
-    <h1 class="text-4xl font-bold mb-6">Våra Samarbetspartners</h1>
+  <!-- Spacer for fixed header -->
+  <div class="h-20"></div>
 
-    <div class="flex flex-wrap justify-center gap-12">
-      <img src="https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg" alt="Tele2" class="h-20 rounded" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png" alt="Telia" class="h-20" />
-      <img src="https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg" alt="Telenor" class="h-20 rounded" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Halebop_logo_2014.svg/1200px-Halebop_logo_2014.svg.png" alt="Halebop" class="h-20" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Tre_logo.svg" alt="Tre" class="h-20" />
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-extrabold text-blue-600 mb-10 text-center">Våra Samarbetspartners</h1>
+
+    <div class="flex flex-wrap justify-start gap-12 items-center">
+      <img
+        src="https://mb.cision.com/Public/3372/4130715/b9f707e6cee5920c_org.jpg"
+        alt="Tele2 logotyp"
+        class="h-20 rounded shadow-sm hover:shadow-md transition cursor-pointer"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Telia.svg/1200px-Telia.svg.png"
+        alt="Telia logotyp"
+        class="h-20 hover:brightness-110 transition cursor-pointer"
+      />
+      <img
+        src="https://images.ctfassets.net/d48yc3frismn/2alkLOowwaSm0LJYWChQtC/0c972d418d07c5e003fa9af900385d6b/open_graph_telenor_foretag_1200x628.jpg"
+        alt="Telenor logotyp"
+        class="h-20 rounded shadow-sm hover:shadow-md transition cursor-pointer"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Halebop_logo_2014.svg/1200px-Halebop_logo_2014.svg.png"
+        alt="Halebop logotyp"
+        class="h-20 hover:brightness-110 transition cursor-pointer"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Tre_logo.svg/1200px-Tre_logo.svg.png"
+        alt="Tre logotyp"
+        class="h-20 hover:brightness-110 transition cursor-pointer"
+      />
+
+      <!-- New logos -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png"
+        alt="Amazon logotyp"
+        class="h-20 hover:brightness-110 transition cursor-pointer"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/MIO_Logo.svg/2560px-MIO_Logo.svg.png"
+        alt="MIO logotyp"
+        class="h-20 hover:brightness-110 transition cursor-pointer"
+      />
+      <img
+        src="https://detailproduktion.se/wp-content/uploads/2014/04/ica-maxi-stormarknad-logo.png"
+        alt="ICA Maxi logotyp"
+        class="h-20 hover:brightness-110 transition cursor-pointer"
+      />
+      <img
+        src="https://via.tt.se/data/images/00805/2913a401-6a83-4295-9dba-619a02bd438d.jpg"
+        alt="Tele2 logotyp"
+        class="h-20 rounded shadow-sm hover:shadow-md transition cursor-pointer"
+      />
     </div>
   </main>
 
@@ -59,10 +92,12 @@
   <script>
     const bg = document.getElementById("bg-follow");
     document.addEventListener("mousemove", (e) => {
+      if (!bg) return;
       let x = (e.clientX / window.innerWidth - 0.5) * 20;
       let y = (e.clientY / window.innerHeight - 0.5) * 20;
       bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
     });
   </script>
+
 </body>
 </html>
