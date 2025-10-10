@@ -1,106 +1,65 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+  <link rel="stylesheet" href="style.css" />
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Signera Avtal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <style>
-    body {
-      background-color: #f3f4f6;
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-    h2 {
-      font-size: 1.75rem; /* larger heading */
-      margin-bottom: 0.75rem;
-      color: #1e3a8a;
-    }
-    p {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    #qrcode {
-      margin: 1rem auto;
-      display: flex;
-      justify-content: center;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: #2563eb;
-      color: white;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #1d4ed8;
-    }
-    .logos {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .logos img {
-      height: 40px;
-      /* you can reduce for very small screens */
-    }
-    @media (max-width: 360px) {
-      h2 {
-        font-size: 1.5rem;
-      }
-      .btn {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
-      }
-      .logos img {
-        height: 32px;
-      }
-    }
-  </style>
 </head>
-<body>
-  <div class="container">
-    <h2>Signera Ditt Avtal</h2>
-    <p>Bekräfta ditt val och signera med BankID för att slutföra.</p>
+<body class="bg-white text-gray-900 min-h-screen flex flex-col">
 
-    <div id="qrcode"></div>
-
-    <a href="index.html" class="btn">Signera med BankID</a>
-
-    <!-- Logos (if you want them) -->
-    <div class="logos">
-      <img src="logo1.png" alt="Partner 1" />
-      <img src="logo2.png" alt="Partner 2" />
-      <!-- add more if needed -->
+   <!-- Header -->
+  <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-extrabold text-blue-600">Adeala</a>
+      <nav class="hidden md:flex space-x-6 text-lg font-medium text-gray-700">
+        <a href="#offers" class="hover:text-blue-600 transition">Abonnemang</a>
+        <a href="#offers" class="hover:text-blue-600 transition">Bredband</a>
+        <a href="partner.html" class="hover:text-blue-600 transition">Partner</a>
+        <a href="belöning.html" class="hover:text-blue-600 transition">Belöning</a>
+        <a href="om-oss.html" class="hover:text-blue-600 transition">Om oss</a>
+        <a href="kundservice.html" class="hover:text-blue-600 transition">Kundservice</a>
+      </nav>
+      <a href="login.html" class="text-gray-700 hover:text-blue-600 transition" aria-label="Mina Sidor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5.121 17.804A9.005 9.005 0 0112 15c2.21 0 4.21.895 5.657 2.343M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </a>
     </div>
-  </div>
+  </header>
+
+  <!-- Spacer for fixed header -->
+  <div class="h-24"></div>
+
+  <!-- Main container -->
+  <main class="max-w-md mx-auto bg-white rounded-lg shadow-md p-8 text-center">
+
+    <h2 class="text-2xl font-bold text-blue-600 mb-3">Signera Ditt Avtal</h2>
+    <p class="mb-6 text-gray-700">Bekräfta ditt val och signera med BankID för att slutföra.</p>
+
+    <div id="qrcode" class="flex justify-center mb-6"></div>
+
+    <a href="index.html" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded transition inline-block mb-8">
+      Signera med BankID
+    </a>
+
+    <div class="text-left mb-2 font-semibold text-gray-700">I samarbete med:</div>
+    <div class="flex gap-6 items-center">
+      <img src="logo1.png" alt="Partner 1" class="h-10" />
+      <img src="logo2.png" alt="Partner 2" class="h-10" />
+      <!-- Add more logos if needed -->
+    </div>
+  </main>
 
   <script>
     const qrContainer = document.getElementById("qrcode");
 
     function generateQR() {
-      qrContainer.innerHTML = ""; // clear previous
-      // This is sample dynamic content. Replace with your real API or link.
+      qrContainer.innerHTML = "";
       new QRCode(qrContainer, {
         text: "https://example.com/sign?id=" + Date.now(),
         width: 200,
@@ -111,7 +70,6 @@
       });
     }
 
-    // initial + periodic refresh
     generateQR();
     setInterval(generateQR, 1000);
   </script>
