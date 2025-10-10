@@ -1,23 +1,64 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+  <link rel="stylesheet" href="style.css" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BankID Inloggning</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    .btn {
+      @apply bg-blue-600 text-white py-3 px-6 rounded hover:bg-blue-700 transition text-lg;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-white text-gray-900 min-h-screen flex flex-col">
 
-  <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full text-center">
-    <h2 class="text-2xl font-semibold text-blue-700 mb-2">BankID Inloggning</h2>
-    <p class="mb-4">Skanna QR-koden i din BankID-app</p>
+  <!-- Header -->
+  <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="text-2xl font-extrabold text-blue-600">APM</a>
 
-    <div id="qrcode" class="flex justify-center mb-6"></div>
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-6 text-lg font-medium text-gray-700">
+        <a href="abonnemang.html" class="hover:text-blue-600 transition">Abonnemang</a>
+        <a href="partner.html" class="hover:text-blue-600 transition">Partner</a>
+        <a href="vouchers.html" class="hover:text-blue-600 transition">Vouchers</a>
+        <a href="om-oss.html" class="hover:text-blue-600 transition">Om oss</a>
+        <a href="kundservice.html" class="hover:text-blue-600 transition">Kundservice</a>
+      </nav>
 
-    <a href="offers.html" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition">Fortsätt</a>
-  </div>
+      <!-- Login Icon -->
+      <a href="login.html" class="text-gray-700 hover:text-blue-600 transition" aria-label="Mina Sidor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5.121 17.804A9.005 9.005 0 0112 15c2.21 0 4.21.895 5.657 2.343M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </a>
+    </div>
+  </header>
 
+  <!-- Spacer below header -->
+  <div class="h-24"></div>
+
+  <!-- QR Login Card -->
+  <main class="flex-grow flex items-center justify-center px-4 py-12">
+    <div class="bg-white border border-gray-200 rounded-lg shadow-md p-8 max-w-md w-full text-center">
+      <h2 class="text-3xl font-bold text-blue-600 mb-4">BankID Inloggning</h2>
+      <p class="text-gray-600 mb-6">Skanna QR-koden i din BankID-app för att logga in</p>
+
+      <!-- QR Code -->
+      <div id="qrcode" class="flex justify-center mb-8"></div>
+
+      <!-- Continue Button -->
+      <a href="offers.html" class="btn">Fortsätt</a>
+    </div>
+  </main>
+
+  <!-- QR Code Script -->
   <script>
     const qrContainer = document.getElementById("qrcode");
 
