@@ -1,0 +1,125 @@
+<!-- Mobil Quiz Partial -->
+<section class="w-full bg-white text-gray-900">
+  <main id="quizM-container" class="max-w-5xl mx-auto py-16 px-6 text-center">
+    <h2 id="quizM-question" class="text-3xl font-semibold mb-6 text-gray-800">Laddar fråga...</h2>
+    <div id="quizM-answers" class="flex flex-col gap-6 items-center"></div>
+    <button id="quizM-restart" class="hidden mt-8 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+      Starta om
+    </button>
+  </main>
+</section>
+
+<script>
+(() => {
+  const steps = [
+    { id: 1, text: "Vad är viktigast för dig i abonnemanget?", answers: ["Täckning", "Hastighet", "Fritext / Annat"] },
+    { id: 2, text: "Ska du flytta hit nummer eller skaffa nytt?", answers: ["Flytta hit nummer", "Skaffa nytt nummer"] },
+  ];
+
+  let currentStep = 0;
+  const q = id => document.getElementById("quizM-" + id);
+  const questionEl = q("question");
+  const answersEl = q("answers");
+  const restartBtn = q("restart");
+
+  function renderStep() {
+    const step = steps[currentStep];
+    questionEl.textContent = step.text;
+    answersEl.innerHTML = "";
+
+    step.answers.forEach(ans => {
+      const btn = document.createElement("button");
+      btn.textContent = ans;
+      btn.className = "bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition";
+      btn.onclick = () => {
+        if (step.id === 2) ans === "Flytta hit nummer" ? showMoveNumberInput() : showNewNumberOptions();
+        else {
+          currentStep++;
+          renderStep();
+        }
+      };
+      answersEl.appendChild(btn);
+    });
+
+    restartBtn.classList.toggle("hidden", currentStep === 0);
+  }
+
+  function showMoveNumberInput() {
+    questionEl.textContent = "Ange ditt nuvarande telefonnummer";
+    answersEl.innerHTML = `
+      <input id="quizM-number" type="tel" placeholder="0701234567 eller +46701234567"
+        class="border border-gray-300 rounded-lg px-4 py-3 w-64 text-center focus:ring-2 focus:ring-blue-400 outline-none" />
+      <button id="quizM-confirm" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition mt-4">
+        Bekräfta nummer
+      </button>
+      <p id="quizM-error" class="text-red-600 text-sm mt-2"></p>
+    `;
+
+    document.getElementById("quizM-confirm").onclick = () => {
+      const num = document.getElementById("quizM-number").value.trim();
+      const err = document.getElementById("quizM-error");
+      const pattern = /^(07\d{8}|\+467\d{8})$/;
+      if (!pattern.test(num)) {
+        err.textContent = "Numret måste vara 10 siffror och börja med 07 eller +46 följt av 9 siffror.";
+        return;
+      }
+      err.textContent = "";
+      showOffers();
+    };
+  }
+
+  function showNewNumberOptions() {
+    questionEl.textContent = "Välj ett nytt nummer";
+    answersEl.innerHTML = `
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <button class="bg-gray-100 hover:bg-blue-100 border border-gray-300 px-6 py-3 rounded-lg transition">0709876543</button>
+        <button class="bg-gray-100 hover:bg-blue-100 border border-gray-300 px-6 py-3 rounded-lg transition">0732223344</button>
+        <button class="bg-gray-100 hover:bg-blue-100 border border-gray-300 px-6 py-3 rounded-lg transition">0768889900</button>
+      </div>
+      <p class="mb-3 text-gray-600">Eller sök efter ledigt nummer:</p>
+      <input id="quizM-search" type="text" placeholder="Sök ledigt nummer..."
+        class="border border-gray-300 rounded-lg px-4 py-3 w-64 text-center focus:ring-2 focus:ring-blue-400 outline-none" />
+      <button id="quizM-searchBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition mt-4">
+        Sök
+      </button>
+      <p id="quizM-msg" class="text-green-600 text-sm mt-2"></p>
+    `;
+
+    [...answersEl.querySelectorAll("button.bg-gray-100")].forEach(btn => btn.onclick = showOffers);
+
+    document.getElementById("quizM-searchBtn").onclick = () => {
+      const term = document.getElementById("quizM-search").value.trim();
+      const msg = document.getElementById("quizM-msg");
+      const pattern = /^(07\d{8}|\+467\d{8})$/;
+      if (!pattern.test(term)) {
+        msg.classList.replace("text-green-600", "text-red-600");
+        msg.textContent = "Ange ett giltigt svenskt nummer (07XXXXXXXX eller +467XXXXXXXX).";
+        return;
+      }
+      msg.classList.replace("text-red-600", "text-green-600");
+      msg.textContent = `Numret ${term} är ledigt 🎉`;
+      setTimeout(showOffers, 1000);
+    };
+  }
+
+  function showOffers() {
+    questionEl.textContent = "Erbjudanden med pris per person";
+    answersEl.innerHTML = `
+      <p class="text-lg mb-6 text-gray-700">Här visas erbjudanden baserade på dina val:</p>
+      <a href="erbjudande.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+        Visa erbjudanden
+      </a>
+      <a href="signera.html" class="block mt-6 text-blue-600 font-semibold hover:underline">
+        Fortsätt till signering
+      </a>
+    `;
+  }
+
+  restartBtn.addEventListener("click", () => {
+    currentStep = 0;
+    renderStep();
+  });
+
+  renderStep();
+})();
+</script>
